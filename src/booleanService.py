@@ -2,14 +2,16 @@ class BooleanService:
     def isQuestion(column):
         identifier = column.split(' ')[0]
         numbers = identifier.split('.')
-        if len(numbers) <= 1:
+        hasInterrogation = False if len(column.split('?')) == 1 else True
+        if len(numbers) <= 1 and not hasInterrogation:
+            print("I am here")
             return False
         else:
             return True
 
     def repeated(column, columns):
         # repeaeted column ends like .1 or .2
-        if(column[-2] == '.'):
+        if (column[-2] == '.'):
             return True
         index = columns.index(column)
         question = column.split('/')[0]
