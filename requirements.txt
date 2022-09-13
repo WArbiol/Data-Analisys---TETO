@@ -1,4 +1,4 @@
-pandas==1.4.4
+pandas
 dataframe_image
 openpyxl==3.0.10
 tk==0.1.0
