@@ -4,7 +4,6 @@ class BooleanService:
         numbers = identifier.split('.')
         hasInterrogation = False if len(column.split('?')) == 1 else True
         if len(numbers) <= 1 and not hasInterrogation:
-            print("I am here")
             return False
         else:
             return True
