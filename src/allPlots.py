@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+from pathlib import Path
 import glob
 from booleanService import BooleanService as bool
 from plotService import PlotService
@@ -19,7 +21,8 @@ def makePlotsOfSheet(excel, sheet):
 
 
 def makeAllPlots():
-    excelPath = "./*.xlsx"
+    excelPath = Path().absolute()  
+    excelPath= os.path.join(excelPath, '*.xlsx')
     xlsx = glob.glob(excelPath)
     print(xlsx)
     excel = pd.ExcelFile(xlsx[0])

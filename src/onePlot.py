@@ -19,7 +19,8 @@ def makePlotsOfCol(excel, sheet, col):
 
 
 def makeOnePlot(col):
-    excelPath = "./*.xlsx"
+    excelPath = Path().absolute()  
+    excelPath= os.path.join(excelPath, '*.xlsx')
     xlsx = glob.glob(excelPath)
     excel = pd.ExcelFile(xlsx[0])
     sheets = excel.sheet_names

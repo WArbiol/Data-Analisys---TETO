@@ -29,21 +29,16 @@ def takeOutSideBars(string):
 
 
 def createDir(path):
-    path = path[0:-1]  # take out the last "/"
-    if not os.path.isdir(f'./{path}'):
-        currentPath = Path().absolute()  # tentar './'
-        dirPath = str(currentPath) + path
+    if not os.path.isdir(path):
         os.makedirs(path)
-    return
-
 
 class PathTitleService:
     def getPathAndTitle(col):
-        path = 'automaticPlots/'
-        identifier = col.split(' ')[0]
-        numbers = identifier.split('.')
+        path = Path().absolute()  
+        path = os.path.join(path, 'automaticPlots')
+        numbers = col.split('. ')[0]
         for number in numbers[0:-2]:
-            path = path + f'{number}/'
+            path = os.path.join(path, f'{number}')
 
         createDir(path)
         createDir(path.replace('automaticPlots', 'automaticTables'))
