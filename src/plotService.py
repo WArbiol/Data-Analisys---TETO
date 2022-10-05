@@ -1,7 +1,7 @@
 from pathTitleService import PathTitleService
 from tableService import TableService
 from optionsService import OptionsService
-import os
+import os, matplotlib
 
 
 class PlotService:
@@ -9,7 +9,6 @@ class PlotService:
         path, title = PathTitleService.getPathAndTitle(col)
 
         pathAndTitle = os.path.join(path,title+'.png')
-        print("pathAndTitle: ", pathAndTitle)
         TableService.saveSimpleTable(df, col, pathAndTitle, title)
 
         try:
@@ -19,14 +18,25 @@ class PlotService:
         except:
             df = df[(df[col] != 'Nenhuma') & (df[col] != 'Nenhum') & (
                 df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')][col].to_frame()
-        df = df[col].rename('').to_frame()
+        df = df[col].dropna().rename('').to_frame()
+
+        temp = False
+        if col=='Qual outra condição?': temp = True
+
         col = ''
         respostas = df.groupby([col])[col].count()
+
+        if temp:
+            print('8888888888888888888888888888888888888888888888888888888888888888888888888888888')
+            print(df)
+            print(respostas)
+            print('8888888888888888888888888888888888888888888888888888888888888888888888888888888')
 
         if respostas.size > 0:
             plot = respostas.plot.bar(title=title, figsize=(7, 4))
             plot.figure.savefig(pathAndTitle, dpi=300,
                                 bbox_inches='tight', facecolor='white')
+            matplotlib.pyplot.close()
 
     def makeOptionsPlot(df, col, columns):
         path, title = PathTitleService.getPathAndTitle(col)
@@ -40,3 +50,4 @@ class PlotService:
         plot = df.plot.bar(title=title, figsize=(7, 4), legend=False)
         plot.figure.savefig(pathAndTitle, dpi=300,
                             bbox_inches='tight', facecolor='white')
+        matplotlib.pyplot.close()

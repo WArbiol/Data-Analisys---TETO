@@ -4,19 +4,23 @@ from pathlib import Path
 import glob
 from booleanService import BooleanService as bool
 from plotService import PlotService
+import matplotlib
 
 
 def makePlotsOfSheet(excel, sheet):
     df = pd.read_excel(excel, sheet)
     columns = df.columns
     columns = columns.tolist()
+
     for column in columns:
         if not bool.isQuestion(column) or bool.repeated(column, columns):
             continue
         if bool.hasMultipleOptions(column, columns):
+            if column=='Qual outra condição?': print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             PlotService.makeOptionsPlot(df, column, columns)
             continue
-
+        
+        if column=='Qual outra condição?': print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
         PlotService.makeSimplePlot(df, column)
 
 
