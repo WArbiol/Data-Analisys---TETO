@@ -1,4 +1,5 @@
 import dataframe_image as dfi
+import matplotlib
 
 
 def renameColumns(df, col):
@@ -16,17 +17,19 @@ def addPorcent(df):
 
 class TableService:
     def saveSimpleTable(df, col, pathAndTitle, title):
-        pathAndTitle.split('automaticPlots')
-        pathAndTitle = "pathAndTitle"+pathAndTitle[-1]
         pathAndTitle = pathAndTitle.replace(
             'automaticPlots', 'automaticTables')
         respostas = df.groupby([col])[col].count().to_frame()
-
         if respostas.shape[0] < 50:
             respostas = renameColumns(respostas, title)
             respostas = addPorcent(respostas)
-            dfi.export(respostas, pathAndTitle)
-
+            # plot = respostas.plot()
+            # fig = plot.get_figure()
+            # fig.savefig(r"Diarreia_é_um_problema_recorrente_em_algum_membro_da_família.png")
+            # pathAndTitle = 'automaticTables' + pathAndTitle.split('automaticTables')[-1]
+            # pathAndTitle=pathAndTitle.replace("?", "")
+            dfi.export(respostas, rf'{pathAndTitle}', fontsize=12, table_conversion='matplot')
+            
     def saveOptionsTable(respostas, pathAndTitle, title):
         pathAndTitle = pathAndTitle.replace(
             'automaticPlots', 'automaticTables')

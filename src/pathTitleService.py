@@ -20,12 +20,13 @@ def takeOutVar(string):
         return string
 
 
-def takeOutSideBars(string):
-    try:
+def takeOutForbiddenCharacters(string):
+    if string.__contains__('/'):
         string = string.replace('/', '-')
-        return string
-    except:
-        return string
+    if string.__contains__('?'):
+        string = string.replace('?', '')
+
+    return string
 
 
 def createDir(path):
@@ -47,6 +48,6 @@ class PathTitleService:
 
         title = takeOutVar(col)
         title = takeOutNumber(title)
-        title = takeOutSideBars(title)
+        title = takeOutForbiddenCharacters(title)
 
         return path, title
