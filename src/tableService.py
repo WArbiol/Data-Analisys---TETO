@@ -23,12 +23,7 @@ class TableService:
         if respostas.shape[0] < 50:
             respostas = renameColumns(respostas, title)
             respostas = addPorcent(respostas)
-            # plot = respostas.plot()
-            # fig = plot.get_figure()
-            # fig.savefig(r"Diarreia_é_um_problema_recorrente_em_algum_membro_da_família.png")
-            # pathAndTitle = 'automaticTables' + pathAndTitle.split('automaticTables')[-1]
-            # pathAndTitle=pathAndTitle.replace("?", "")
-            dfi.export(respostas, rf'{pathAndTitle}', fontsize=12, table_conversion='matplot')
+            dfi.export(respostas, pathAndTitle, fontsize=10, table_conversion='matplot')
             
     def saveOptionsTable(respostas, pathAndTitle, title):
         pathAndTitle = pathAndTitle.replace(
@@ -37,4 +32,4 @@ class TableService:
         if respostas.shape[0] < 99:
             respostas = renameColumns(respostas, title)
             respostas = addPorcent(respostas)
-            dfi.export(respostas, pathAndTitle)
+            dfi.export(respostas, pathAndTitle, fontsize=10, table_conversion='matplot')
