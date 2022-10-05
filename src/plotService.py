@@ -20,17 +20,8 @@ class PlotService:
                 df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')][col].to_frame()
         df = df[col].dropna().rename('').to_frame()
 
-        temp = False
-        if col=='Qual outra condição?': temp = True
-
         col = ''
         respostas = df.groupby([col])[col].count()
-
-        if temp:
-            print('8888888888888888888888888888888888888888888888888888888888888888888888888888888')
-            print(df)
-            print(respostas)
-            print('8888888888888888888888888888888888888888888888888888888888888888888888888888888')
 
         if respostas.size > 0:
             plot = respostas.plot.bar(title=title, figsize=(7, 4))
