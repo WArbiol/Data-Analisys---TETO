@@ -3,4 +3,4 @@ plots/
 automaticPlots/
 automaticTables/
 Excels/
-**.pyc
+src/__pycache__/
