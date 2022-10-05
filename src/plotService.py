@@ -1,14 +1,16 @@
 from pathTitleService import PathTitleService
 from tableService import TableService
 from optionsService import OptionsService
+import os
 
 
 class PlotService:
     def makeSimplePlot(df, col):
         path, title = PathTitleService.getPathAndTitle(col)
 
-        tablePathAndTitle = path+title+'.png'
-        TableService.saveSimpleTable(df, col, tablePathAndTitle, title)
+        pathAndTitle = os.path.join(path,title+'.png')
+        print("pathAndTitle: ", pathAndTitle)
+        TableService.saveSimpleTable(df, col, pathAndTitle, title)
 
         try:
             nomeCol = 'Nome completo do/a morador/a que responderá e assinará a enquete:'
@@ -20,9 +22,10 @@ class PlotService:
         df = df[col].rename('').to_frame()
         col = ''
         respostas = df.groupby([col])[col].count()
+
         if respostas.size > 0:
             plot = respostas.plot.bar(title=title, figsize=(7, 4))
-            plot.figure.savefig(path+title, dpi=300,
+            plot.figure.savefig(pathAndTitle, dpi=300,
                                 bbox_inches='tight', facecolor='white')
 
     def makeOptionsPlot(df, col, columns):
@@ -31,9 +34,9 @@ class PlotService:
         df = OptionsService.getAnswerOfTheOption(columnsOptions, df)
         df.rename(index=lambda s: s.split('/')[-1], inplace=True)
 
-        tablePathAndTitle = path+title+'.png'
-        TableService.saveOptionsTable(df, tablePathAndTitle, title)
+        pathAndTitle = os.path.join(path,title+'.png')
+        TableService.saveOptionsTable(df, pathAndTitle, title)
 
         plot = df.plot.bar(title=title, figsize=(7, 4), legend=False)
-        plot.figure.savefig(path+title, dpi=300,
+        plot.figure.savefig(pathAndTitle, dpi=300,
                             bbox_inches='tight', facecolor='white')

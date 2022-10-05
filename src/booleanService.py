@@ -3,7 +3,7 @@ class BooleanService:
         identifier = column.split(' ')[0]
         numbers = identifier.split('.')
         hasInterrogation = False if len(column.split('?')) == 1 else True
-        if len(numbers) <= 1 and not hasInterrogation:
+        if (len(numbers) <= 1 and not hasInterrogation) or column.__contains__("(OBRIGATÓRIA"):
             return False
         else:
             return True

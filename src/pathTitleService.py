@@ -34,9 +34,11 @@ def createDir(path):
 
 class PathTitleService:
     def getPathAndTitle(col):
-        path = Path().absolute()  
+        path = Path().absolute()
         path = os.path.join(path, 'automaticPlots')
-        numbers = col.split('. ')[0]
+        print(col)       
+        identifier = col.split(' ')[0]
+        numbers = identifier.split('.')
         for number in numbers[0:-2]:
             path = os.path.join(path, f'{number}')
 

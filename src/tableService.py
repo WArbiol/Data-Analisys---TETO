@@ -16,6 +16,8 @@ def addPorcent(df):
 
 class TableService:
     def saveSimpleTable(df, col, pathAndTitle, title):
+        pathAndTitle.split('automaticPlots')
+        pathAndTitle = "pathAndTitle"+pathAndTitle[-1]
         pathAndTitle = pathAndTitle.replace(
             'automaticPlots', 'automaticTables')
         respostas = df.groupby([col])[col].count().to_frame()

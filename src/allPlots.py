@@ -24,7 +24,6 @@ def makeAllPlots():
     excelPath = Path().absolute()  
     excelPath= os.path.join(excelPath, '*.xlsx')
     xlsx = glob.glob(excelPath)
-    print(xlsx)
     excel = pd.ExcelFile(xlsx[0])
     sheets = excel.sheet_names
 
