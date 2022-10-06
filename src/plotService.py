@@ -18,26 +18,25 @@ class PlotService:
 
         if respostas.size > 0:
             TableService.saveSimpleTable(respostas, pathAndTitle, title)
-            plot = respostas.plot.bar(title=title, figsize=(7, 4))
-            plot.figure.savefig(pathAndTitle, dpi=300,
-                                bbox_inches='tight', facecolor='white')
-            matplotlib.pyplot.close()
+            savePlot(respostas, pathAndTitle, title)
 
     def makeOptionsPlot(df, col, columns):
         path, title = PathTitleService.getPathAndTitle(col)
         columnsOptions = OptionsService.getTheColumnsWithOptions(col, columns)
         df = OptionsService.getAnswerOfTheOption(columnsOptions, df)
         df.rename(index=lambda s: s.split('/')[-1], inplace=True)
-
         pathAndTitle = os.path.join(path,title+'.png')
+        
         TableService.saveOptionsTable(df, pathAndTitle, title)
-
-        plot = df.plot.bar(title=title, figsize=(7, 4), legend=False)
-        plot.figure.savefig(pathAndTitle, dpi=300,
-                            bbox_inches='tight', facecolor='white')
-        matplotlib.pyplot.close()
+        savePlot(df, pathAndTitle, title)
 
 def takeOutNoneAnswers(df, col):
     df = df[(df[col] != 'Nenhuma') & (df[col] != 'Nenhum') & 
             (df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')]
     return df
+
+def savePlot(respostas, pathAndTitle, title):
+    plot = respostas.plot.bar(title=title, figsize=(7, 4))
+    plot.figure.savefig(pathAndTitle, dpi=300,
+                        bbox_inches='tight', facecolor='white')
+    matplotlib.pyplot.close()
