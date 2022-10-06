@@ -17,7 +17,7 @@ def addPorcent(df):
 
 class TableService:
     def saveSimpleTable(respostas, pathAndTitle, title):
-        pathAndTitle = pathAndTitle.replace('automaticPlots', 'automaticTables')
+        pathAndTitle = pathAndTitle.replace('GraficosDeBarras', 'Tabelas')
         respostas = respostas.to_frame()
         
         if respostas.shape[0] < 50:
@@ -27,7 +27,7 @@ class TableService:
             
     def saveOptionsTable(respostas, pathAndTitle, title):
         pathAndTitle = pathAndTitle.replace(
-            'automaticPlots', 'automaticTables')
+            'GraficosDeBarras', 'Tabelas')
 
         if respostas.shape[0] < 99:
             respostas = renameColumns(respostas, title)

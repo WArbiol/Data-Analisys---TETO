@@ -36,7 +36,7 @@ def createDir(path):
 class PathTitleService:
     def getPathAndTitle(col):
         path = Path().absolute()
-        path = os.path.join(path, 'automaticPlots')
+        path = os.path.join(path, 'GraficosDeBarras')
         print(col)       
         identifier = col.split(' ')[0]
         numbers = identifier.split('.')
@@ -44,7 +44,8 @@ class PathTitleService:
             path = os.path.join(path, f'{number}')
 
         createDir(path)
-        createDir(path.replace('automaticPlots', 'automaticTables'))
+        createDir(path.replace('GraficosDeBarras', 'Tabelas'))
+        createDir(path.replace('GraficosDeBarras', 'GraficosDePizza'))
 
         title = takeOutVar(col)
         title = takeOutNumber(title)

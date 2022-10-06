@@ -1,6 +1,6 @@
 *.xlsx
 plots/
-automaticPlots/
-automaticTables/
+GraficosDeBarras/
+Tabelas/
 Excels/
 src/__pycache__/
