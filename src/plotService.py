@@ -7,23 +7,17 @@ import os, matplotlib
 class PlotService:
     def makeSimplePlot(df, col):
         path, title = PathTitleService.getPathAndTitle(col)
-
         pathAndTitle = os.path.join(path,title+'.png')
-        TableService.saveSimpleTable(df, col, pathAndTitle, title)
 
-        try:
-            nomeCol = 'Nome completo do/a morador/a que responderá e assinará a enquete:'
-            df = df[(df[nomeCol] != 'Teste app') & (df[nomeCol] != 'Teste 2') & (df[nomeCol] != 'Teste') & (df[col] != 'Nenhuma') & (
-                df[col] != 'Nenhum') & (df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')][col].to_frame()
-        except:
-            df = df[(df[col] != 'Nenhuma') & (df[col] != 'Nenhum') & (
-                df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')][col].to_frame()
-        df = df[col].dropna().rename('').to_frame()
-
+        df = df[col].to_frame() #get lighter and faster
+        df = df[col].dropna().to_frame()
+        df = takeOutNoneAnswers(df, col) 
+        df = df[col].rename('').to_frame()
         col = ''
         respostas = df.groupby([col])[col].count()
 
         if respostas.size > 0:
+            TableService.saveSimpleTable(respostas, pathAndTitle, title)
             plot = respostas.plot.bar(title=title, figsize=(7, 4))
             plot.figure.savefig(pathAndTitle, dpi=300,
                                 bbox_inches='tight', facecolor='white')
@@ -42,3 +36,8 @@ class PlotService:
         plot.figure.savefig(pathAndTitle, dpi=300,
                             bbox_inches='tight', facecolor='white')
         matplotlib.pyplot.close()
+
+def takeOutNoneAnswers(df, col):
+    df = df[(df[col] != 'Nenhuma') & (df[col] != 'Nenhum') & 
+            (df[col] != 'Não sabe/Não respondeu') & (df[col] != 'Não sabe/ Não respondeu')]
+    return df

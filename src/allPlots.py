@@ -1,3 +1,4 @@
+from this import d
 import pandas as pd
 import os
 from pathlib import Path
@@ -12,15 +13,15 @@ def makePlotsOfSheet(excel, sheet):
     columns = df.columns
     columns = columns.tolist()
 
+    df = take_out_tests(df)
+
     for column in columns:
         if not bool.isQuestion(column) or bool.repeated(column, columns):
             continue
         if bool.hasMultipleOptions(column, columns):
-            if column=='Qual outra condição?': print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             PlotService.makeOptionsPlot(df, column, columns)
             continue
         
-        if column=='Qual outra condição?': print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
         PlotService.makeSimplePlot(df, column)
 
 
@@ -33,3 +34,16 @@ def makeAllPlots():
 
     for sheet in sheets:
         makePlotsOfSheet(excel, sheet)
+
+
+def take_out_tests(df):
+    firstColumn = df.columns[0]
+    if firstColumn != 'start':
+        col_with_names = firstColumn
+    else:
+        col_with_names = 'Nome completo do/a morador/a que responderá e assinará a enquete:'
+    try:
+        df = df[df[col_with_names].str.contains('Teste') == False ]
+        return df
+    except:
+        return df

@@ -13,24 +13,22 @@ def myClick():
     messagebox.showinfo("ajuda", "[INSTRUÇÕES]")
 
 
-e = Entry(root, width=70, borderwidth=5, bg="#D2CFCE")
-e.grid(row=3, column=0)
+one_analysis_input = Entry(root, width=70, borderwidth=5, bg="#D2CFCE")
+one_analysis_input.grid(row=3, column=0)
 
 myLabel1 = Label(root, text=" ", font="7", )
-myLabel2 = Label(root, text="Pergunta:", font="7", )
-myButton1 = Button(root, text="Gerar análise da pergunta",
+one_analysis_label = Label(root, text="Pergunta:", font="7", )
+one_analysis_button = Button(root, text="Gerar análise da pergunta",
                    fg="white", bg="blue", font="7", bd="5", padx="50",
-                   command=lambda: makeOnePlot(e.get()))
-myButton2 = Button(root, text="Gerar análise de todas as perguntas",
+                   command=lambda: makeOnePlot(one_analysis_input.get()))
+all_analysis_button = Button(root, text="Gerar análise de todas as perguntas",
                    command=makeAllPlots, fg="white", bg="blue", font="7", bd="5", padx="14")
-myButton3 = Button(root, text="ajuda", command=myClick)
+help_button = Button(root, text="ajuda", command=myClick)
 
 myLabel1.grid(row=1, column=0)
-myLabel2.grid(row=2, column=0)
-myButton1.grid(row=4, column=0, padx="2", pady="2")
-myButton2.grid(row=0, column=0, padx="2", pady="8")
-myButton3.grid(row=5, column=1, padx="2", pady="2")
+one_analysis_label.grid(row=2, column=0)
+one_analysis_button.grid(row=4, column=0, padx="2", pady="2")
+all_analysis_button.grid(row=0, column=0, padx="2", pady="8")
+help_button.grid(row=5, column=1, padx="2", pady="2")
 
 root.mainloop()
-
-# 1.04. Quais dos seguintes documentos ${nome_morador_documento} já tirou?
