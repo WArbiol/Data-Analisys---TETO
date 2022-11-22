@@ -73,6 +73,13 @@ Análogo ao allPlots.py mas adaptado a apenas uma questão.
 3. Crie um python notebook no VSCode para facilidade (nome_do_arquivo.ipynb)
 4. Cole as funções no notebook e rode célula a célula para ver o funcionamento, com prints e tudo.
 
+# Para criar o executável .exe:
+
+1. Esteja em ambiente Windows, com o Python instalado e como todas as bibliotecas tambem.
+2. Instale o `pyinstaller`
+3. Rode `pyinstaller --onefile .\src\index.py`
+4. Link para saber mais: https://datatofish.com/executable-pyinstaller/
+
 # Se tiver duvidas procure as soluções em:
 
 1. Google
