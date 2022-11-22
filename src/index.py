@@ -10,7 +10,7 @@ root.columnconfigure(0, weight=1)  # Placement settings
 
 
 def myClick():
-    messagebox.showinfo("ajuda", "[INSTRUÇÕES]")
+    messagebox.showinfo("ajuda", "Coloque o arquivo excel gerado pela Kobo na mesma pasta desse programa e clique em 'Gerar análise de todas as perguntas' ou se quiser uma em específico cole o nome da coluna que contem a pergunta na ciaxa de texto e clique em 'Gerar análise da pergunta'")
 
 
 one_analysis_input = Entry(root, width=70, borderwidth=5, bg="#D2CFCE")

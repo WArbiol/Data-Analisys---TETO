@@ -52,7 +52,19 @@ Onde estão as funções referentes às tabelas, como salva-las, adicionar porce
 Funções referentes às perguntas que pode-se marcar varias alternativas.
 
 - getAnswerOfTheOption: retorna um dataframe com o numero de respostas de cada opção.
-- getTheColumnsWithOptions: retorna uma lista com as opções de respostas que o entrevista tem
+- getTheColumnsWithOptions: retorna uma lista com as opções de respostas que o entrevistado tem.
+
+### pathTitleService.py
+
+Retorna o path do grafico que será gerado e o titulo da pergunta, criando os diretórios se preciso e fazendo as devidas alterações nos nomes das colunas para virar nome das perguntas.
+
+### pieService.py
+
+Código referente a criar os graficos de pizza, entretanto há um problema para se resolver para criar o gráfico de pizza das questões que se pode marmar multilas alternativas, por isso não é utilizada.
+
+### onePlot.py
+
+Análogo ao allPlots.py mas adaptado a apenas uma questão.
 
 # Dica para estudo do código e debug
 
@@ -60,3 +72,10 @@ Funções referentes às perguntas que pode-se marcar varias alternativas.
 2. Crie um excel teste com só uma pergunta (um excel com uma pergunta simples e outra com uma pergunta que pode-se maarcar varias alternativas)
 3. Crie um python notebook (nome_do_arquivo.ipynb)
 4. Cole as funções no notebook e rode célula a célula para ver o funcionamento, com prints e tudo.
+
+# Se tiver duvidas procure as soluções em:
+
+1. Google
+2. Stack OverFlow
+3. Youtube
+4. Com o último autor do código: (11) 99941-5221 (Walter -- Barueri T25)
