@@ -28,3 +28,35 @@ from onePlot import makeOnePlot
 Daí notamos outros dois arquivos de código: `allPlots` e `onePlot`:
 
 ### allPlots.py
+
+Possui três principais funções: `makePlotsOfSheet`, `makeAllPlots`, `take_out_tests`.
+
+- makeAllPlots: Lê o excel, ve as planilhas (sheets) que o excel possui e para cada planilha (sheet) cra os gráficos com `makePlotsOfSheet(excel, sheet)`.
+- makePlotsOfSheet: Lê as colunas do excel, tira as linhas que a Teto usou para teste (o nome da pessoa entrevistada seria Teste..algumacoisa..) com a função `take_out_tests`, e para cada coluna analisa se é uma coluna de pergunta, se é uma coluna repetida (o que acontece com perguntas que pode-se marcar varias alternativas) e se é uma pergunta de multiplas respostas faz os plots com `PlotService.makeOptionsPlot(df, column, columns)`, se é uma pergunta simples, de uma resposta `PlotService.makeSimplePlot(df, column)`.
+- take_out_tests: deleta as linhas que o nome do entrevistado contém "Teste", o nome dessa coluna é 'start' ou 'Nome completo do/a morador/a que responderá e assinará a enquete:'.
+
+### booleanService.py
+
+Possui funções de "pergunta" que retornam True or False, os nomes das funções são auto explicativas: `isQuestion`, `repeated`, `hasMultipleOptions`
+
+### plotService.py
+
+Possui as funções de criar os gráficos, funções principais: `makeSimplePlot` e `makeOptionsPlot`, eles salvam os gráficos com as funções `TableService.saveSimpleTable(respostas, pathAndTitle, title)` e `TableService.saveOptionsTable(df, pathAndTitle, title)`, e salvam as tabelas com `saveBar(respostas, pathAndTitle, title)`
+
+### tableService.py
+
+Onde estão as funções referentes às tabelas, como salva-las, adicionar porcentagem e renomear colunas.
+
+### optionsService.py
+
+Funções referentes às perguntas que pode-se marcar varias alternativas.
+
+- getAnswerOfTheOption: retorna um dataframe com o numero de respostas de cada opção.
+- getTheColumnsWithOptions: retorna uma lista com as opções de respostas que o entrevista tem
+
+# Dica para estudo do código e debug
+
+1. Tenha um Linux para evitar bugs (o primeiro autor do código usa Fedora, mas qualquer um serve).
+2. Crie um excel teste com só uma pergunta (um excel com uma pergunta simples e outra com uma pergunta que pode-se maarcar varias alternativas)
+3. Crie um python notebook (nome_do_arquivo.ipynb)
+4. Cole as funções no notebook e rode célula a célula para ver o funcionamento, com prints e tudo.
