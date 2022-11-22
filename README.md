@@ -70,7 +70,7 @@ Análogo ao allPlots.py mas adaptado a apenas uma questão.
 
 1. Tenha um Linux para evitar bugs (o primeiro autor do código usa Fedora, mas qualquer um serve).
 2. Crie um excel teste com só uma pergunta (um excel com uma pergunta simples e outra com uma pergunta que pode-se maarcar varias alternativas)
-3. Crie um python notebook (nome_do_arquivo.ipynb)
+3. Crie um python notebook no VSCode para facilidade (nome_do_arquivo.ipynb)
 4. Cole as funções no notebook e rode célula a célula para ver o funcionamento, com prints e tudo.
 
 # Se tiver duvidas procure as soluções em:
