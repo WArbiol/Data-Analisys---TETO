@@ -2,7 +2,7 @@
 
 ## Como usa-lo localmente
 
-0. Antes de tudo, tenha o Python instalado no seu computador.
+0. Antes de tudo, tenha o Python instalado no seu computador e saiba o mínimo de git (git add, commit, push, pull, branch, checkout, checkout -b)
 1. Para usa-lo clone o repositório em seu computador e dentro da pasta criada **"Data-Analisys---TETO"** coloque o excel gerado pela Kobo.
 2. Abra a pasta **"Data-Analisys---TETO"** no **VSCode**.
 3. Insta-le as deependencias rodando o comando `pip install -r requirements.txt` no terminal do VSCode.
@@ -77,7 +77,7 @@ Análogo ao allPlots.py mas adaptado a apenas uma questão.
 
 1. Esteja em ambiente Windows, com o Python instalado e como todas as bibliotecas tambem.
 2. Instale o `pyinstaller`
-3. Rode `pyinstaller --onefile .\src\index.py`
+3. Rode `pyinstaller --onefile .\src\index.py` e o executável estará na pasta "dist".
 4. Link para saber mais: https://datatofish.com/executable-pyinstaller/
 
 # Se tiver duvidas procure as soluções em:
