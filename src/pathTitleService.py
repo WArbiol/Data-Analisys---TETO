@@ -45,7 +45,7 @@ class PathTitleService:
 
         createDir(path)
         createDir(path.replace('GraficosDeBarras', 'Tabelas'))
-        createDir(path.replace('GraficosDeBarras', 'GraficosDePizza'))
+        #createDir(path.replace('GraficosDeBarras', 'GraficosDePizza'))
 
         title = takeOutVar(col)
         title = takeOutNumber(title)

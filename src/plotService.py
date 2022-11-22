@@ -1,7 +1,7 @@
 from pathTitleService import PathTitleService
 from tableService import TableService
 from optionsService import OptionsService
-from pieService import PieService
+#from pieService import PieService
 import os, matplotlib
 
 
@@ -12,7 +12,7 @@ class PlotService:
 
         df = df[col].to_frame() #get lighter and faster
         df = df[col].dropna().to_frame()
-        df = takeOutNoneAnswers(df, col) 
+        #df = takeOutNoneAnswers(df, col) 
         df = df[col].rename('').to_frame()
         col = ''
         respostas = df.groupby([col])[col].count()
@@ -20,7 +20,7 @@ class PlotService:
         if respostas.size > 0:
             TableService.saveSimpleTable(respostas, pathAndTitle, title)
             saveBar(respostas, pathAndTitle, title)
-            PieService.saveSimplePie(respostas, pathAndTitle, title)
+            #PieService.saveSimplePie(respostas, pathAndTitle, title)
 
     def makeOptionsPlot(df, col, columns):
         path, title = PathTitleService.getPathAndTitle(col)
@@ -31,7 +31,7 @@ class PlotService:
         
         TableService.saveOptionsTable(df, pathAndTitle, title)
         saveBar(df, pathAndTitle, title)
-        #PieService.saveOptionsPie(df, pathAndTitle, title)
+        #PieService.saveOptionsPie(df, pathAndTitle, title) (AQUI QUE DAVA PROBLEMA NO DE PIZZA)
 
 def takeOutNoneAnswers(df, col):
     df = df[(df[col] != 'Nenhuma') & (df[col] != 'Nenhum') & 

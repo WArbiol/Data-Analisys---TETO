@@ -20,7 +20,6 @@ class BooleanService:
 
     def hasMultipleOptions(column, columns):
         index = columns.index(column)
-        # or columns[index-1].__contains__(column):
         if columns[index+1].__contains__(column):
             return True
 

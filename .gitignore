@@ -1,7 +1,6 @@
 *.xlsx
 plots/
 GraficosDeBarras/
-GraficosDePizza/
 Tabelas/
 Excels/
 src/__pycache__/
