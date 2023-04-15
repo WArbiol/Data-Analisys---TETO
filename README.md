@@ -1,4 +1,6 @@
 # Data-Analisys---TETO
+Software de cunho social para auxílio na análise de dados de pesquisas sociais realizadas pela TETO (ONG que construímos soluções concretas e emergenciais que proporcionam melhorias nas condições de moradia e habitat de comunidades carentes).
+
 
 ## Como usa-lo localmente
 
